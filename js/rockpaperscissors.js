@@ -5,19 +5,19 @@ let playOptions = ['rock', 'paper', 'scissors']
 const robotImage = document.getElementById('robot');
 function changeImage(choice){
     if(choice == 'rock'){
-        robotImage.src="/images/robotrock.png";
+        robotImage.src="images/robotrock.png";
         console.log('Changed image to Rock');
     } else if (choice == 'paper'){
-        robotImage.src="/images/robotpaper.png";
+        robotImage.src="images/robotpaper.png";
         console.log('Changed image to paper.');
     } else if (choice == 'scissors'){
-        robotImage.src="/images/robotscissors.png";
+        robotImage.src="images/robotscissors.png";
         console.log('Changed image to scissors.');
     }
 }
 // Restore robot face when clickd on.
 robotImage.addEventListener("click", function (){
-    robotImage.src="/images/robotbase.png";
+    robotImage.src="images/robotbase.png";
 });
 
 // Dom manipulation for buttons
