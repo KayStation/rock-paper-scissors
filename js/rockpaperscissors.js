@@ -1,6 +1,6 @@
 // Making gameMechanics an object so I can change features if I want.
 let gameMechanics = {
-    playOptions: ['Rock', 'Paper', 'Scissors']
+    playOptions: ['rock', 'paper', 'scissors']
 }
 
 let computerPlay = function(){
