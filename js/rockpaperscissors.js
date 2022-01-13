@@ -1,62 +1,87 @@
-// Making gameMechanics an object so I can change features if I want.
-let gameMechanics = {
-    playOptions: ['rock', 'paper', 'scissors']
-}
+// Global vars
+let playOptions = ['rock', 'paper', 'scissors']
 
-let computerPlay = function(){
-    const randomChoice = Math.floor(Math.random()*gameMechanics.playOptions.length);
-    // console.log(`Number decided is ${randomChoice}.`);
-
-    const computerChoice = gameMechanics.playOptions[randomChoice];
-    // console.log(`The computer played ${computerChoice}!`)
-
-    return computerChoice;
-}
-
-let humanPlay = function(){
-    // Take player input and sanitize it.
-    let decision = window.prompt('What will you choose?', 'Write rock, paper, or scissors here.')
-    decision = decision.toString();
-    decision = decision.toLowerCase();
-
-    const logChoice = function(){
-        console.log(`You have chosen ${decision}!`)
-    };
-
-    
-    // Change decision to whatever they chose, or nothing.
-    switch (decision){
-        case 'rock':
-            logChoice();
-            return 'rock';
-            break;
-
-        case 'paper':
-            logChoice();
-            return 'paper';
-            break;
-
-        case 'scissors':
-            logChoice();
-            return 'scissors';
-            break;
-
-        default:
-            console.log(`You know, you can't play ${decision} in Rock Paper Scissors.`);
-            return decision;
+// DOM manipulation for Robot
+const robotImage = document.getElementById('robot');
+function changeImage(choice){
+    if(choice == 'rock'){
+        robotImage.src="/images/robotrock.png";
+        console.log('Changed image to Rock');
+    } else if (choice == 'paper'){
+        robotImage.src="/images/robotpaper.png";
+        console.log('Changed image to paper.');
+    } else if (choice == 'scissors'){
+        robotImage.src="/images/robotscissors.png";
+        console.log('Changed image to scissors.');
     }
 }
+// Restore robot face when clickd on.
+robotImage.addEventListener("click", function (){
+    robotImage.src="/images/robotbase.png";
+});
 
-function playGame(){
+// Dom manipulation for buttons
+let anyButton = document.getElementsByClassName('button1');
+let rockButton = document.getElementById('rockButton');
+let paperButton = document.getElementById('paperButton');
+let scissorsButton = document.getElementById('scissorsButton');
+
+
+let chooseButton = function(choice){
+    let playerInput = choice;
+    console.log(`You have chosen ${playerInput}!`)
+    return playerInput;
+}
+
+rockButton.addEventListener("click", function(){
+    playGame('rock');
+    console.log('lol');
+});
+paperButton.addEventListener("click", function (){
+    playGame('paper')
+});
+scissorsButton.addEventListener("click", function (){
+    playGame('scissors');
+});
+
+
+// Function to replace instructions with winner of playGame();
+
+const instructions = document.getElementById('instructionsText');
+function displayWinner(name){
+    if (name == null){
+        instructions.innerText = `Nobody has won!`
+    } else {
+        instructions.innerText = `${name} has won!`
+    }
+};
+
+
+
+
+// The game itself. playerInput is decided by clicking a button.
+
+function playGame(playerInput){
+    // Define vars
     let winner;
     let human;
     let computer;
 
-    let humanChoice = humanPlay();
-    console.log(`Human played ${humanChoice}`);
+    // Define functions
+    let computerPlay = function(){
+        const randomChoice = Math.floor(Math.random()*playOptions.length);
+        const computerChoice = playOptions[randomChoice];
+        return computerChoice;
+    }
 
+    // What does the player play?
+    let humanChoice = playerInput;
+    console.log(`Human played ${playerInput}`);
+
+    // computerPlay() outcome decides computerChoice
     let computerChoice = computerPlay();
     console.log(`Computer played ${computerChoice}`);
+    changeImage(computerChoice);
     
     const computerWinLog = `Computer played ${computerChoice} and won.`;
     const humanWinLog = `Human played ${humanChoice} and won.`;
@@ -65,40 +90,54 @@ function playGame(){
     // Decide winner
     if(humanChoice == computerChoice){
         console.log('Game tied.');
+        displayWinner(winner);
 
         // Results if human chose rock
     } else if (humanChoice == 'rock'){
 
         if(computerChoice == 'paper'){
-            winner = computer;
+            winner = 'Computer';
             console.log(computerWinLog);
+            displayWinner(winner);
+            
         } else {
-            winner = human;
+            winner = 'Human';
             console.log(humanWinLog);
+            displayWinner(winner);
+            
         }
 
         // Results if human chose paper
     } else if (humanChoice == 'paper'){
 
         if(computerChoice == 'scissors'){
-            winner = computer;
+            winner = 'Computer';
             console.log(computerWinLog);
+            displayWinner(winner);
+            
         } else {
-            winner = human;
+            winner = 'Human';
             console.log(humanWinLog);
+            displayWinner(winner);
+            
         }
         // Results if human chose scissors
     } else if (humanChoice == 'scissors'){
 
         if(computerChoice == 'rock'){
-            winner = computer;
+            'Computer';
             console.log(computerWinLog);
+            displayWinner(winner);
+            
         } else {
-            winner = human;
+            winner = 'Human';
             console.log(humanWinLog);
+            displayWinner(winner);
+            
         }
         // Results if human chose anything else.
-    } else if (humanChoice == decision){
-        console.log(`You know, ${decision} isn't a playable option.`);
+    } else{
+        console.log('Error');
     }
 }
+

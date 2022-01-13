@@ -6,7 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Project: Rock Paper Scissors</title>
     <link rel="stylesheet" href="/css/styles.css">
-    <script src="js/rockpaperscissors.js"></script>
 </head>
 <body>
     <main>
@@ -14,16 +13,16 @@
             <h1>Rock, Paper, Scissors</h1>
         </div>
         <div class="instructions">
-            <h2>Select your choice to play!</h2>
+            <h2 id="instructionsText">Select your choice to play!</h2>
         </div>
         <div class="robot">
-            <img src="/images/robotbase.png";>
+            <img id="robot" src="/images/robotbase.png";>
         </div>
         <div class="playArea">
             <div class="optionsContainer">
-                    <a href="something" class="button1">Rock</a>
-                    <a href="something" class="button1">Paper</a>
-                    <a href="something" class="button1">Scissors</a>
+                    <button class="button1" id="rockButton">Rock</a>
+                    <button class="button1" id="paperButton">Paper</a>
+                    <button class="button1" id="scissorsButton">Scissors</a>
             </div>
             
         </div>
@@ -31,5 +30,7 @@
     <footer>
 
     </footer>
+
+    <script src="js/rockpaperscissors.js"></script>
 </body>
 </html>
