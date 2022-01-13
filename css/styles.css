@@ -24,6 +24,10 @@ body{
     padding-right:3em;
 }
 
+img{
+    max-width:100%;
+    max-height:auto;
+}
 
 
 .optionsContainer{
