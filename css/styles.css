@@ -1,6 +1,8 @@
+
+
 body{
     background: linear-gradient(160deg, #9198e5, #e66465);
-    font-family:'Roboto',sans-serif;
+    font-family:'Roboto',sans-serif; 
 }
 
 .title{
@@ -23,22 +25,28 @@ body{
     text-align:center;
 }
 
+
+
 .optionsContainer{
     display:flex;
-    flex-direction:row;
+    flex-flow:row wrap;
+    justify-content:space-around;
+    align-items:center;
+    border:2px solid red;
+    gap: 4em;
 }
 
+
+/* Button credit https://fdossena.com/?p=html5cool/buttons/i.frag */
 a.button1{
+    line-height: 5em;
     flex:1;
-    gap:90%;
-    padding:1em 1.2em;
     border:0.1em solid #FFFFFF;
-    margin:0 0.3em 0.3em 0;
     border-radius:0.12em;
-    box-sizing: border-box;
     text-decoration:none;
     font-weight:300;
     color:#FFFFFF;
+    font-size:2em;
     text-align:center;
     transition: all 0.2s;
 }
@@ -50,7 +58,6 @@ a.button1:hover{
 
 @media all and (max-width:30em){
     a.button1{
-    display:block;
     margin:0.4em auto;
     }
 } 
