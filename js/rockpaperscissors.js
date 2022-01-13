@@ -125,7 +125,7 @@ function playGame(playerInput){
     } else if (humanChoice == 'scissors'){
 
         if(computerChoice == 'rock'){
-            'Computer';
+            winner = 'Computer';
             console.log(computerWinLog);
             displayWinner(winner);
             
