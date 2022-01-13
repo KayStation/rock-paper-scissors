@@ -35,7 +35,6 @@ img{
     flex-flow:row wrap;
     justify-content:space-around;
     align-items:center;
-    border:2px solid red;
     gap: 4em;
 }
 
