@@ -11,13 +11,13 @@ body{
 }
 
 .holograph{
-    background-color:white;
+    background-color:rgba(255, 255, 255, 0.6);
     border:0.5em solid rgb(66, 77, 177);
-    margin:5% 20%;
+    margin:1% 20%;
     height:auto;
     transition: all 1s ease-out;
     text-transform: uppercase;
-	color: #ffd9e2;
+    z-index:1;
 	box-shadow: 0 0 0 transparent,
                 0 0 0.1em #e9e5e6,
                 0 0 0.2em rgba(255, 0, 60, 0.5),
@@ -48,9 +48,33 @@ body{
 }
 
 .title{
+    font-size:2em;
     text-align:center;
 }
 
 .instructions{
     text-align:center;
+}
+
+.startButton{
+    display:block;
+    margin:1em auto;
+    padding:0.1em 1.5em;
+    line-height: 3em;
+    flex:1;
+    border:0.1em solid #FFFFFF;
+    border-radius:0.12em;
+    text-decoration:none;
+    font-weight:300;
+    color:rgb(0,0,0);
+    background:none;
+    font-size:2em;
+    text-align:center;
+    transition: all 0.2s;
+}
+
+.startButton:hover{
+    cursor:pointer;
+    color:#000000;
+    background-color:rgba(255,255,255, 0.5);
 }
