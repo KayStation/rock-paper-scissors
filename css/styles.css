@@ -1,68 +1,56 @@
 
 
 body{
-    background: linear-gradient(160deg, #9198e5, #e66465);
-    font-family:'Sansita', 'Roboto', sans-serif; 
+    font-family:'Sansita', 'Roboto', sans-serif;
+    background: center center fixed no-repeat url("../images/background.jpg");
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    font-size:20px;
+}
+
+.holograph{
+    background-color:white;
+    border:0.5em solid rgb(66, 77, 177);
+    margin:5% 20%;
+    height:auto;
+    transition: all 1s ease-out;
+    text-transform: uppercase;
+	color: #ffd9e2;
+	box-shadow: 0 0 0 transparent,
+                0 0 0.1em #e9e5e6,
+                0 0 0.2em rgba(255, 0, 60, 0.5),
+                0 0 0.3em #e9e5e6,
+                0 0 0.5em #e9e5e6,
+                0 0 0.6em #e9e5e6,
+                0 0 0.7em #e9e5e6,
+                0 0 0.8em #e9e5e6,
+                0 0 10em #e9e5e6;
+	animation: animate 10s infinite alternate;
+}
+@keyframes animate {
+	40% {
+		opacity: 1;
+	}
+	42% {
+		opacity: 0.95;
+	}
+	43% {
+		opacity: 1;
+	}
+	45% {
+		opacity: 0.85;
+	}
+	46% {
+		opacity: 1;
+	}
 }
 
 .title{
     text-align:center;
-    font-weight:300;
-    color:#FFFFFF;
-    font-size:2em;
 }
 
 .instructions{
     text-align:center;
-    font-weight:100;
-    color:#FFFFFF;
-    font-size:1em;
 }
-
-.robot{
-    text-align:center;
-    padding-right:3em;
-}
-
-img{
-    max-width:100%;
-    max-height:auto;
-}
-
-
-.optionsContainer{
-    display:flex;
-    flex-flow:row wrap;
-    justify-content:space-around;
-    align-items:center;
-    border:2px solid red;
-    gap: 4em;
-}
-
-
-/* Button credit https://fdossena.com/?p=html5cool/buttons/i.frag */
-.button1{
-    line-height: 5em;
-    flex:1;
-    border:0.1em solid #FFFFFF;
-    border-radius:0.12em;
-    text-decoration:none;
-    font-weight:300;
-    color:#FFFFFF;
-    background:none;
-    font-size:2em;
-    text-align:center;
-    transition: all 0.2s;
-}
-
-.button1:hover{
-    cursor:pointer;
-    color:#000000;
-    background-color:#FFFFFF;
-}
-
-@media all and (max-width:30em){
-    a.button1{
-    margin:0.4em auto;
-    }
-} 
