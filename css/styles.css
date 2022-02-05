@@ -56,7 +56,7 @@ body{
     text-align:center;
 }
 
-.startButton{
+#startButton{
     display:block;
     margin:1em auto;
     padding:0.1em 1.5em;
@@ -73,8 +73,33 @@ body{
     transition: all 0.2s;
 }
 
-.startButton:hover{
+#startButton:hover{
     cursor:pointer;
     color:#000000;
     background-color:rgba(255,255,255, 0.5);
+}
+
+#scoreFlexContainer{
+    display:flex;
+    gap:3em;
+    align-items:center;
+    margin:0em 3em;
+}
+
+#robotImage{
+    flex:1;
+    max-width:30%;
+    height:auto;
+}
+
+#robotScoreBox{
+    flex:1;
+    background-color:rgba(150, 255, 255, 0.4);
+    height:8em;
+}
+
+#humanScoreBox{
+    flex:1;
+    background-color:rgba(255, 255, 255, 0.4);
+    height:8em;
 }

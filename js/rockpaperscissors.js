@@ -1,5 +1,39 @@
-// Global vars
 let playOptions = ['rock', 'paper', 'scissors']
+
+// Start button to begin game
+const startButton = document.getElementById('startButton');
+
+
+
+startButton.addEventListener('click', function(){
+    const holograph = document.getElementsByClassName('holograph')[0];
+
+    // Create elements
+    const scoreFlexContainer = document.createElement('div');
+    const img = document.createElement('img');
+    const robotScoreBox = document.createElement('div');
+    const humanScoreBox = document.createElement('div');
+
+    // Add score flex container
+    scoreFlexContainer.id="scoreFlexContainer";
+    holograph.appendChild(scoreFlexContainer);
+
+    // Add robot
+    img.src="images/robotbase.png";
+    img.id="robotImage";
+    scoreFlexContainer.appendChild(img);
+
+    // Add robot score box
+    robotScoreBox.id="robotScoreBox"
+    scoreFlexContainer.appendChild(robotScoreBox);
+
+    // Add human score box
+    humanScoreBox.id="humanScoreBox"
+    scoreFlexContainer.appendChild(humanScoreBox);
+
+
+    holograph.removeChild(startButton);
+});
 
 // DOM manipulation for Robot
 const robotImage = document.getElementById('robot');
