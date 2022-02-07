@@ -1,4 +1,9 @@
-let playOptions = ['rock', 'paper', 'scissors']
+let playOptions = ['rock', 'paper', 'scissors'];
+let humanScore = 0;
+let robotScore = 0;
+
+const robotScoreText = `Robot Score: ${robotScore}`;
+const humanScoreText = `Human Score: ${humanScore}`;
 
 // Start button to begin game
 const startButton = document.getElementById('startButton');
@@ -14,11 +19,17 @@ startButton.addEventListener('click', function(){
     const robotScoreBox = document.createElement('div');
     const humanScoreBox = document.createElement('div');
 
+    // Create text elements
+    const robotH2 = document.createElement('h2');
+    const humanH2 = document.createElement('h2');
+    const defaultRobotScoreText = document.createTextNode(robotScoreText);
+    const defaultHumanScoreText = document.createTextNode(humanScoreText); 
+
     // Add score flex container
     scoreFlexContainer.id="scoreFlexContainer";
     holograph.appendChild(scoreFlexContainer);
 
-    // Add robot
+    // Add robot image
     img.src="images/robotbase.png";
     img.id="robotImage";
     scoreFlexContainer.appendChild(img);
@@ -26,10 +37,21 @@ startButton.addEventListener('click', function(){
     // Add robot score box
     robotScoreBox.id="robotScoreBox"
     scoreFlexContainer.appendChild(robotScoreBox);
+    
+    // Add robot score
+    robotScoreBox.appendChild(robotH2)
+    robotH2.id="robotScoreText";
+    robotH2.appendChild(defaultRobotScoreText);
 
     // Add human score box
     humanScoreBox.id="humanScoreBox"
     scoreFlexContainer.appendChild(humanScoreBox);
+
+    // Add human score
+    humanScoreBox.appendChild(humanH2)
+    humanH2.id="humanScoreText";
+    humanH2.appendChild(defaultHumanScoreText);
+
 
 
     holograph.removeChild(startButton);

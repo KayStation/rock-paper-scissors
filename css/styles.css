@@ -1,5 +1,4 @@
 
-
 body{
     font-family:'Sansita', 'Roboto', sans-serif;
     background: center center fixed no-repeat url("../images/background.jpg");
@@ -46,6 +45,7 @@ body{
 		opacity: 1;
 	}
 }
+
 
 .title{
     font-size:2em;
@@ -102,4 +102,21 @@ body{
     flex:1;
     background-color:rgba(255, 255, 255, 0.4);
     height:8em;
+}
+
+#robotScoreText,#humanScoreText{
+    text-align:center;
+    padding-top:10%;
+}
+
+/* Mobile and small resolution accessibility. */
+@media only screen and (max-width: 1000px) {
+    .holograph {
+        margin:0%;
+    }
+    
+    #scoreFlexContainer{
+        gap:5%;
+    }
+    
 }
