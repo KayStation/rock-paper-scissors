@@ -123,7 +123,7 @@ body{
     font-size:3em;
     background-color:rgba(255, 255, 255, 0.8);
     border:0.1em solid rgb(66, 77, 177);
-    transition: all 1s ease-out;
+    transition: all 0.3s ease-out;
     text-transform: uppercase;
 	box-shadow: 0 0 0 transparent,
                 0 0 0.1em #e9e5e6,
@@ -132,6 +132,12 @@ body{
                 0 0 0.5em #e9e5e6;
 	animation: animate 3s infinite alternate;
 }
+
+#rockButton:hover, #scissorsButton:hover, #paperButton:hover{
+    color:rgb(66, 77, 177);
+    background-color:rgba(0, 0, 0, 0.9);
+}
+
 @keyframes animate {
 	40% {
 		opacity: 1;
