@@ -118,6 +118,7 @@ body{
 #rockButton, #scissorsButton, #paperButton{
     flex:1;
     margin-top:1em;
+    cursor:pointer;
     color:black;
     font-size:3em;
     background-color:rgba(255, 255, 255, 0.8);

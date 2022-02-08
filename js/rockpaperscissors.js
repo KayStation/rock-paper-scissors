@@ -26,6 +26,9 @@ startButton.addEventListener('click', function(){
     const defaultRobotScoreText = document.createTextNode(robotScoreText);
     const defaultHumanScoreText = document.createTextNode(humanScoreText); 
 
+    // Update instructions
+    document.getElementById('instructionsText').innerText='Click your choice to begin.';
+
     // Add score flex container
     scoreFlexContainer.id="scoreFlexContainer";
     holograph.appendChild(scoreFlexContainer);
