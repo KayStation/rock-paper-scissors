@@ -2,8 +2,6 @@ let playOptions = ['rock', 'paper', 'scissors'];
 let humanScore = 0;
 let robotScore = 0;
 
-const robotScoreText = `Robot Score: ${robotScore}`;
-const humanScoreText = `Human Score: ${humanScore}`;
 
 // Start button to begin game
 const startButton = document.getElementById('startButton');
@@ -23,8 +21,8 @@ startButton.addEventListener('click', function(){
     // Create text elements
     const robotH2 = document.createElement('h2');
     const humanH2 = document.createElement('h2');
-    const defaultRobotScoreText = document.createTextNode(robotScoreText);
-    const defaultHumanScoreText = document.createTextNode(humanScoreText); 
+    let RobotScoreText = document.createTextNode('Score = 0');
+    let HumanScoreText = document.createTextNode('Score = 0'); 
 
     // Update instructions
     instructionText.innerText='Click your choice to begin.';
@@ -45,7 +43,7 @@ startButton.addEventListener('click', function(){
     // Add robot score
     robotScoreBox.appendChild(robotH2)
     robotH2.id="robotScoreText";
-    robotH2.appendChild(defaultRobotScoreText);
+    robotH2.appendChild(RobotScoreText);
 
     // Add human score box
     humanScoreBox.id="humanScoreBox"
@@ -54,7 +52,7 @@ startButton.addEventListener('click', function(){
     // Add human score
     humanScoreBox.appendChild(humanH2)
     humanH2.id="humanScoreText";
-    humanH2.appendChild(defaultHumanScoreText);
+    humanH2.appendChild(HumanScoreText);
 
     //Lower Container---------------------------------------------------------------
 
@@ -153,10 +151,14 @@ function playGame(playerInput){
         } else if (winner == 'human'){
             instructionText.innerHTML =`Match won. Human's ${humanChoice} beat the robot's ${robotChoice}!`;
             humanScore += 1;
+            humanScoreText.innerHTML = `Human Score: ${humanScore}`;
         } else {
             instructionText.innerHTML =`Match lost. robot's ${robotChoice} beat the human's ${humanChoice}.`;
             robotScore += 1;
+            robotScoreText.innerHTML = `Robot Score: ${robotScore}`;
         };
+
+
     };
 
 
@@ -208,7 +210,32 @@ function playGame(playerInput){
     } else{
         console.log('Error, player chose invalid option.');
     }
-
-
+    if(humanScore == 5 || robotScore == 5){
+        console.log('Game is over.');
+        endGame();
+    }
 }
+
+// End the game.
+const endGame = function(){
+    if (humanScore > robotScore){
+        instructionText.innerHTML =`The game is over, and humanity has won! Press any button to restart the game.`;
+    } else {
+        instructionText.innerHTML =`The game is over, and the robots have won! We're doomed! Press any button to restart the game.`;
+    };
+
+
+    // Refresh page on button clicks.
+    document.body.addEventListener( 'click', function (event) {
+        if (event.target.id == 'rockButton') {
+            location.reload();
+        } else if (event.target.id == 'paperButton') {
+            location.reload();
+        } else if (event.target.id == 'scissorsButton'){
+            location.reload();
+        };
+    });
+}
+// End the game when these values are reached.
+
 
