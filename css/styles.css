@@ -109,6 +109,46 @@ body{
     padding-top:10%;
 }
 
+#optionsContainer{
+    display:flex;
+    gap:4em;
+    
+}
+
+#rockButton, #scissorsButton, #paperButton{
+    flex:1;
+    margin-top:1em;
+    color:black;
+    font-size:3em;
+    background-color:rgba(255, 255, 255, 0.8);
+    border:0.1em solid rgb(66, 77, 177);
+    transition: all 1s ease-out;
+    text-transform: uppercase;
+	box-shadow: 0 0 0 transparent,
+                0 0 0.1em #e9e5e6,
+                0 0 0.2em rgba(255, 0, 0, 0.5),
+                0 0 0.7em #e9e5e6,
+                0 0 0.5em #e9e5e6;
+	animation: animate 3s infinite alternate;
+}
+@keyframes animate {
+	40% {
+		opacity: 1;
+	}
+	42% {
+		opacity: 0.95;
+	}
+	43% {
+		opacity: 1;
+	}
+	45% {
+		opacity: 0.85;
+	}
+	46% {
+		opacity: 1;
+	}
+}
+
 /* Mobile and small resolution accessibility. */
 @media only screen and (max-width: 1000px) {
     .holograph {
@@ -119,4 +159,11 @@ body{
         gap:5%;
     }
     
+    #optionsContainer{
+        flex-direction:column;
+        gap:0em;
+    }
+    #rockButton, #scissorsButton, #paperButton{
+        font-size:2.25;
+    }
 }

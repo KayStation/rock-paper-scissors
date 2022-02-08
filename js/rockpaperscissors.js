@@ -11,6 +11,7 @@ const startButton = document.getElementById('startButton');
 
 
 startButton.addEventListener('click', function(){
+    //Upper Container---------------------------------------------------------------
     const holograph = document.getElementsByClassName('holograph')[0];
 
     // Create elements
@@ -52,7 +53,32 @@ startButton.addEventListener('click', function(){
     humanH2.id="humanScoreText";
     humanH2.appendChild(defaultHumanScoreText);
 
+    //Lower Container---------------------------------------------------------------
 
+    const playArea = document.getElementById('playArea');
+
+    // Create Play Area Elements
+    const optionsContainer = document.createElement('div');
+
+    const rockButton = document.createElement('button');
+    const paperButton = document.createElement('button');
+    const scissorsButton = document.createElement('button');
+
+    // Add elements to DOM
+    playArea.appendChild(optionsContainer);
+    optionsContainer.id="optionsContainer";
+
+    optionsContainer.appendChild(rockButton);
+    rockButton.id="rockButton";
+    rockButton.innerText='Rock';
+
+    optionsContainer.appendChild(paperButton);
+    paperButton.id="paperButton";
+    paperButton.innerText='Paper';
+
+    optionsContainer.appendChild(scissorsButton);
+    scissorsButton.id="scissorsButton";
+    scissorsButton.innerText='Scissors';
 
     holograph.removeChild(startButton);
 });
