@@ -7,7 +7,7 @@ const humanScoreText = `Human Score: ${humanScore}`;
 
 // Start button to begin game
 const startButton = document.getElementById('startButton');
-
+const instructionText = document.getElementById('instructionsText');
 
 
 startButton.addEventListener('click', function(){
@@ -27,7 +27,7 @@ startButton.addEventListener('click', function(){
     const defaultHumanScoreText = document.createTextNode(humanScoreText); 
 
     // Update instructions
-    document.getElementById('instructionsText').innerText='Click your choice to begin.';
+    instructionText.innerText='Click your choice to begin.';
 
     // Add score flex container
     scoreFlexContainer.id="scoreFlexContainer";
@@ -86,60 +86,24 @@ startButton.addEventListener('click', function(){
     holograph.removeChild(startButton);
 });
 
-// DOM manipulation for Robot
-const robotImage = document.getElementById('robot');
-function changeImage(choice){
-    if(choice == 'rock'){
-        robotImage.src="images/robotrock.png";
-        console.log('Changed image to Rock');
-    } else if (choice == 'paper'){
-        robotImage.src="images/robotpaper.png";
-        console.log('Changed image to paper.');
-    } else if (choice == 'scissors'){
-        robotImage.src="images/robotscissors.png";
-        console.log('Changed image to scissors.');
-    }
-}
-// Restore robot face when clickd on.
-robotImage.addEventListener("click", function (){
-    robotImage.src="images/robotbase.png";
-});
+
 
 // Dom manipulation for buttons
-let anyButton = document.getElementsByClassName('button1');
-let rockButton = document.getElementById('rockButton');
-let paperButton = document.getElementById('paperButton');
-let scissorsButton = document.getElementById('scissorsButton');
+let rockButton = document.querySelector('rockButton')
+let paperButton = document.querySelector('paperButton')
+let scissorsButton = document.querySelector('scissorsButton')
 
 
-let chooseButton = function(choice){
-    let playerInput = choice;
-    console.log(`You have chosen ${playerInput}!`)
-    return playerInput;
-}
-
-rockButton.addEventListener("click", function(){
-    playGame('rock');
-    console.log('lol');
+// Start the game when you click a button.
+document.body.addEventListener( 'click', function (event) {
+    if (event.target.id == 'rockButton') {
+        playGame('rock');
+    } else if (event.target.id == 'paperButton') {
+        playGame('paper');
+    } else if (event.target.id == 'scissorsButton'){
+        playGame('scissors');
+    };
 });
-paperButton.addEventListener("click", function (){
-    playGame('paper')
-});
-scissorsButton.addEventListener("click", function (){
-    playGame('scissors');
-});
-
-
-// Function to replace instructions with winner of playGame();
-
-const instructions = document.getElementById('instructionsText');
-function displayWinner(name){
-    if (name == null){
-        instructions.innerText = `Nobody has won!`
-    } else {
-        instructions.innerText = `${name} has won!`
-    }
-};
 
 
 
@@ -147,82 +111,104 @@ function displayWinner(name){
 // The game itself. playerInput is decided by clicking a button.
 
 function playGame(playerInput){
-    // Define vars
     let winner;
-    let human;
-    let computer;
+
 
     // Define functions
-    let computerPlay = function(){
+    let robotPlay = function(){
         const randomChoice = Math.floor(Math.random()*playOptions.length);
-        const computerChoice = playOptions[randomChoice];
-        return computerChoice;
+        const robotChoice = playOptions[randomChoice];
+        return robotChoice;
     }
 
     // What does the player play?
     let humanChoice = playerInput;
     console.log(`Human played ${playerInput}`);
 
-    // computerPlay() outcome decides computerChoice
-    let computerChoice = computerPlay();
-    console.log(`Computer played ${computerChoice}`);
-    changeImage(computerChoice);
+    // robotPlay() outcome decides robotChoice
+    let robotChoice = robotPlay();
+    console.log(`Robot played ${robotChoice}`);
+
+    // Change robot's image based on their choice.
+    const robotImage = document.getElementById('robotImage');
+    function changeImage(choice){
+        if(choice == 'rock'){
+            robotImage.src="images/robotrock.png";
+            console.log('Changed image to Rock');
+        } else if (choice == 'paper'){
+            robotImage.src="images/robotpaper.png";
+            console.log('Changed image to paper.');
+        } else if (choice == 'scissors'){
+            robotImage.src="images/robotscissors.png";
+            console.log('Changed image to scissors.');
+        }
+    }
+
+    changeImage(robotChoice);
     
-    const computerWinLog = `Computer played ${computerChoice} and won.`;
-    const humanWinLog = `Human played ${humanChoice} and won.`;
+    
+    let displayWinner = function(winner){
+        if(winner == null){
+            instructionText.innerHTML =`Match tied. Human's ${humanChoice} matched the robot's ${robotChoice}.`;
+        } else if (winner == 'human'){
+            instructionText.innerHTML =`Match won. Human's ${humanChoice} beat the robot's ${robotChoice}!`;
+            humanScore += 1;
+        } else {
+            instructionText.innerHTML =`Match lost. robot's ${robotChoice} beat the human's ${humanChoice}.`;
+            robotScore += 1;
+        };
+    };
+
 
 
     // Decide winner
-    if(humanChoice == computerChoice){
-        console.log('Game tied.');
+    if(humanChoice == robotChoice){
+        winner = null;
         displayWinner(winner);
+        console.log('Game tied.');
+        
 
         // Results if human chose rock
     } else if (humanChoice == 'rock'){
 
-        if(computerChoice == 'paper'){
-            winner = 'Computer';
-            console.log(computerWinLog);
+        if(robotChoice == 'paper'){
+            winner = 'robot';
             displayWinner(winner);
             
         } else {
-            winner = 'Human';
-            console.log(humanWinLog);
+            winner = 'human';
             displayWinner(winner);
-            
         }
 
         // Results if human chose paper
     } else if (humanChoice == 'paper'){
 
-        if(computerChoice == 'scissors'){
-            winner = 'Computer';
-            console.log(computerWinLog);
+        if(robotChoice == 'scissors'){
+            winner = 'robot';
             displayWinner(winner);
             
         } else {
-            winner = 'Human';
-            console.log(humanWinLog);
+            winner = 'human';
             displayWinner(winner);
             
         }
         // Results if human chose scissors
     } else if (humanChoice == 'scissors'){
 
-        if(computerChoice == 'rock'){
-            winner = 'Computer';
-            console.log(computerWinLog);
+        if(robotChoice == 'rock'){
+            winner = 'robot';
             displayWinner(winner);
             
         } else {
-            winner = 'Human';
-            console.log(humanWinLog);
+            winner = 'human';
             displayWinner(winner);
             
         }
         // Results if human chose anything else.
     } else{
-        console.log('Error');
+        console.log('Error, player chose invalid option.');
     }
+
+
 }
 
